@@ -22,8 +22,7 @@ package com.daiduo.lightning;
 
 public class Assets {
 
-	public static final String ARCS_BG		= "arcs1.png";
-	public static final String ARCS_FG		= "arcs2.png";
+	public static final String ARCS_BG		= "arcs.png";
 	public static final String DASHBOARD	= "dashboard.png";
 	
 	public static final String BANNERS	= "banners.png";
