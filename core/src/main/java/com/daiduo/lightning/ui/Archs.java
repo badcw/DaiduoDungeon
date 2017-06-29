@@ -24,6 +24,7 @@ import android.opengl.GLES20;
 
 import com.daiduo.lightning.Assets;
 import com.watabou.noosa.Game;
+import com.watabou.noosa.Image;
 import com.watabou.noosa.NoosaScript;
 import com.watabou.noosa.NoosaScriptNoLighting;
 import com.watabou.noosa.SkinnedBlock;
@@ -34,26 +35,12 @@ import static com.watabou.noosa.Game.dispWidth;
 
 public class Archs extends Component {
 
-	private SkinnedBlock arcsBg;
-	private static float offsB = 0;
-
-
-	public boolean reversed = false;
+	private Image arcsBg;
+	private static String asset = Assets.ARCS_BG;
 
 	@Override
 	protected void createChildren() {
-		arcsBg = new SkinnedBlock( 1, 1, Assets.ARCS_BG );
-		arcsBg.offsetTo( 0,  offsB );
-		add( arcsBg );
-
+		arcsBg = new Image(asset, 0, 0, dispWidth, dispHeight);
+		add(arcsBg);
 	}
-
-
-	@Override
-	protected void layout() {
-		arcsBg.size( dispWidth, dispHeight );
-		arcsBg.offset( dispWidth , 0 );
-
-	}
-
 }

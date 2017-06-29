@@ -50,6 +50,9 @@ import com.watabou.utils.Random;
 import java.nio.FloatBuffer;
 import java.util.Calendar;
 
+import static com.watabou.noosa.Game.dispHeight;
+import static com.watabou.noosa.Game.dispWidth;
+
 public class SurfaceScene extends PixelScene {
 
 	private static final int FRAME_WIDTH    = 88;
@@ -77,11 +80,10 @@ public class SurfaceScene extends PixelScene {
 		
 		uiCamera.visible = false;
 		
-		int w = Camera.main.width;
-		int h = Camera.main.height;
+		int w = dispWidth;
+		int h = dispHeight;
 		
 		Archs archs = new Archs();
-		archs.reversed = true;
 		archs.setSize( w, h );
 		add( archs );
 
