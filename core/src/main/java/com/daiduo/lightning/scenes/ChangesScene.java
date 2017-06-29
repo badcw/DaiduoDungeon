@@ -25,6 +25,7 @@ import com.daiduo.lightning.ShatteredPixelDungeon;
 import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.ui.Archs;
 import com.daiduo.lightning.ui.ExitButton;
+import com.daiduo.lightning.ui.LanguageButton;
 import com.daiduo.lightning.ui.RenderedTextMultiline;
 import com.daiduo.lightning.ui.ScrollPane;
 import com.daiduo.lightning.ui.Window;
@@ -89,6 +90,11 @@ public class ChangesScene extends PixelScene {
 		Archs archs = new Archs();
 		archs.setSize( Camera.main.width, Camera.main.height );
 		addToBack( archs );
+
+
+		LanguageButton btnLang = new LanguageButton();
+		btnLang.setPos(0, 0);
+		add( btnLang );
 
 		fadeIn();
 	}

@@ -29,7 +29,6 @@ import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.ui.Archs;
 import com.daiduo.lightning.ui.ChangesButton;
 import com.daiduo.lightning.ui.ExitButton;
-import com.daiduo.lightning.ui.LanguageButton;
 import com.daiduo.lightning.ui.PrefsButton;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
@@ -106,7 +105,6 @@ public class TitleScene extends PixelScene {
 		DashboardItem btnAbout = new DashboardItem( Messages.get(this, "about"), 1 ) {
 			@Override
 			protected void onClick() {
-				ShatteredPixelDungeon.switchNoFade( AboutScene.class );
 			}
 		};
 		add( btnAbout );
@@ -139,7 +137,7 @@ public class TitleScene extends PixelScene {
 			btnAbout.setPos( w / 2, btnBadges.top() );
 		}
 
-		BitmapText version = new BitmapText( "v " + Game.version + "", pixelFont);
+		BitmapText version = new BitmapText( Game.version + "", pixelFont );
 		version.measure();
 		version.hardlight( 0xCCCCCC );
 		version.x = w - version.width();
@@ -153,10 +151,6 @@ public class TitleScene extends PixelScene {
 		PrefsButton btnPrefs = new PrefsButton();
 		btnPrefs.setPos( 0, 0 );
 		add( btnPrefs );
-
-		LanguageButton btnLang = new LanguageButton();
-		btnLang.setPos(16, 1);
-		add( btnLang );
 
 		ExitButton btnExit = new ExitButton();
 		btnExit.setPos( w - btnExit.width(), 0 );
