@@ -49,6 +49,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.View;
+import android.widget.Toast;
 
 public class Game extends Activity implements GLSurfaceView.Renderer, View.OnTouchListener {
 
@@ -105,7 +106,8 @@ public class Game extends Activity implements GLSurfaceView.Renderer, View.OnTou
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
-		
+
+		Toast.makeText(this, "雷霆制作", Toast.LENGTH_SHORT).show();
 		BitmapCache.context = TextureCache.context = instance = this;
 		
 		DisplayMetrics m = new DisplayMetrics();
@@ -113,6 +115,7 @@ public class Game extends Activity implements GLSurfaceView.Renderer, View.OnTou
 		density = m.density;
 		dispHeight = m.heightPixels;
 		dispWidth = m.widthPixels;
+		
 		
 		try {
 			version = getPackageManager().getPackageInfo( getPackageName(), 0 ).versionName;

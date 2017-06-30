@@ -43,11 +43,13 @@ import com.daiduo.lightning.levels.CavesLevel;
 import com.daiduo.lightning.levels.CityBossLevel;
 import com.daiduo.lightning.levels.CityLevel;
 import com.daiduo.lightning.levels.DeadEndLevel;
+import com.daiduo.lightning.levels.FirstLevel;
 import com.daiduo.lightning.levels.HallsBossLevel;
 import com.daiduo.lightning.levels.HallsLevel;
 import com.daiduo.lightning.levels.LastLevel;
 import com.daiduo.lightning.levels.LastShopLevel;
 import com.daiduo.lightning.levels.Level;
+import com.daiduo.lightning.levels.NewLevel;
 import com.daiduo.lightning.levels.PrisonBossLevel;
 import com.daiduo.lightning.levels.PrisonLevel;
 import com.daiduo.lightning.levels.Room;
@@ -214,6 +216,8 @@ public class Dungeon {
 		Level level;
 		switch (depth) {
 		case 1:
+			level = new NewLevel();
+			break;
 		case 2:
 		case 3:
 		case 4:
