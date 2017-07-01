@@ -26,6 +26,7 @@ import com.daiduo.lightning.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.items.BrokenSeal;
 import com.daiduo.lightning.items.armor.ClothArmor;
+import com.daiduo.lightning.items.armor.TaijiArmor;
 import com.daiduo.lightning.items.artifacts.CloakOfShadows;
 import com.daiduo.lightning.items.food.Food;
 import com.daiduo.lightning.items.potions.PotionOfHealing;
@@ -84,7 +85,7 @@ public enum HeroClass {
 
 	private static void initCommon( Hero hero ) {
 		if (!Dungeon.isChallenged(Challenges.NO_ARMOR))
-			(hero.belongings.armor = new ClothArmor()).identify();
+			(hero.belongings.armor = new TaijiArmor()).identify();
 
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();

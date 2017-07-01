@@ -130,6 +130,7 @@ public class ItemSpriteSheet {
 	public static final int ARMOR_MAGE      = ARMOR+6;
 	public static final int ARMOR_ROGUE     = ARMOR+7;
 	public static final int ARMOR_HUNTRESS  = ARMOR+8;
+	public static final int ARMOR_TAIJI  = ARMOR+9;
 
 	                                                                                    //32 free slots
 
