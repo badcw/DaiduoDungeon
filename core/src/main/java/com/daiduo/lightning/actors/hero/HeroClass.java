@@ -28,6 +28,7 @@ import com.daiduo.lightning.items.BrokenSeal;
 import com.daiduo.lightning.items.armor.ClothArmor;
 import com.daiduo.lightning.items.armor.TaijiArmor;
 import com.daiduo.lightning.items.artifacts.CloakOfShadows;
+import com.daiduo.lightning.items.artifacts.Transpotation;
 import com.daiduo.lightning.items.food.Food;
 import com.daiduo.lightning.items.potions.PotionOfHealing;
 import com.daiduo.lightning.items.potions.PotionOfMindVision;
@@ -84,11 +85,13 @@ public enum HeroClass {
 	}
 
 	private static void initCommon( Hero hero ) {
+
 		if (!Dungeon.isChallenged(Challenges.NO_ARMOR))
 			(hero.belongings.armor = new TaijiArmor()).identify();
 
 		if (!Dungeon.isChallenged(Challenges.NO_FOOD))
 			new Food().identify().collect();
+
 	}
 
 	public Badges.Badge masteryBadge() {
@@ -109,6 +112,11 @@ public enum HeroClass {
 		(hero.belongings.weapon = new WornShortsword()).identify();
 		Dart darts = new Dart( 8 );
 		darts.identify().collect();
+
+
+		Transpotation trans = new Transpotation();
+		(hero.belongings.misc1 = trans).identify();
+		hero.belongings.misc1.activate( hero );
 
 		if ( Badges.isUnlocked(Badges.Badge.TUTORIAL_WARRIOR) ){
 			if (!Dungeon.isChallenged(Challenges.NO_ARMOR))

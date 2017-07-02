@@ -69,6 +69,7 @@ public class ItemSpriteSheet {
 	public static final int MASTERY         = SINGLE_USE+12;
 	public static final int KIT             = SINGLE_USE+13;
 	public static final int AMULET          = SINGLE_USE+14;
+	public static final int TRANSPORTATION  = SINGLE_USE+15;
 
 	                                                                                    //32 free slots
 
