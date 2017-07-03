@@ -52,12 +52,6 @@ public class Transpotation extends Artifact {
 
     }
 
-    @Override
-    public void restoreFromBundle( Bundle bundle ) {
-        super.restoreFromBundle(bundle);
-        returnDepth	= 0;
-        returnPos	= 100;
-    }
 
 
     @Override
@@ -72,23 +66,23 @@ public class Transpotation extends Artifact {
     public void execute( Hero hero, String action ) {
 
         super.execute( hero, action );
+            if (action == AC_RETURN ) {
+                if (returnDepth == Dungeon.depth) {
+                    ScrollOfTeleportation.appear(hero, 100);
+                    Dungeon.level.press(100, hero);
+                    Dungeon.observe();
+                    GameScene.updateFog();
+                } else {
 
-            if (returnDepth == Dungeon.depth) {
-                ScrollOfTeleportation.appear( hero, 100 );
-                Dungeon.level.press( 100, hero );
-                Dungeon.observe();
-                GameScene.updateFog();
-            } else {
+                    Buff buff = Dungeon.hero.buff(TimekeepersHourglass.timeFreeze.class);
+                    if (buff != null) buff.detach();
 
-                Buff buff = Dungeon.hero.buff(TimekeepersHourglass.timeFreeze.class);
-                if (buff != null) buff.detach();
-
-                InterlevelScene.mode = InterlevelScene.Mode.RETURN;
-                InterlevelScene.returnDepth = returnDepth;
-                InterlevelScene.returnPos = returnPos;
-                Game.switchScene( InterlevelScene.class );
+                    InterlevelScene.mode = InterlevelScene.Mode.RETURN;
+                    InterlevelScene.returnDepth = returnDepth;
+                    InterlevelScene.returnPos = returnPos;
+                    Game.switchScene(InterlevelScene.class);
+                }
             }
-
 
 
     }
