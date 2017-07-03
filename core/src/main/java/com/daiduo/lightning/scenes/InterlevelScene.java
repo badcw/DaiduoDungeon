@@ -221,7 +221,6 @@ public class InterlevelScene extends PixelScene {
 	private void fall() throws IOException {
 
 		Actor.fixTime();
-		Dungeon.saveAll();
 
 		Level level;
 		if (Dungeon.depth >= Statistics.deepestFloor) {
@@ -236,7 +235,7 @@ public class InterlevelScene extends PixelScene {
 	private void ascend() throws IOException {
 		Actor.fixTime();
 
-		Dungeon.saveAll();
+
 		Dungeon.depth--;
 		Level level = Dungeon.newLevel();
 		Dungeon.switchLevel( level, level.exit );
