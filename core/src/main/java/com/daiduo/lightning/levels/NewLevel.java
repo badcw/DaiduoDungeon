@@ -3,6 +3,7 @@ package com.daiduo.lightning.levels;
 import com.daiduo.lightning.Assets;
 import com.daiduo.lightning.actors.mobs.Mob;
 import com.daiduo.lightning.actors.mobs.npcs.Shopkeeper;
+import com.daiduo.lightning.actors.mobs.npcs.StallSeller;
 import com.daiduo.lightning.items.Gold;
 import com.daiduo.lightning.levels.painters.Painter;
 
@@ -78,13 +79,13 @@ public class NewLevel extends Level {
 
     @Override
     protected void createMobs() {
-        createShopKeeper();
+        createStallSeller();
     }
 
-    protected void createShopKeeper(){
-        Mob shopkeeper = new Shopkeeper();
-        shopkeeper.pos = pedestal + 1;
-        mobs.add(shopkeeper);
+    protected void createStallSeller(){
+        Mob stallSeller = new StallSeller();
+        stallSeller.pos = pedestal + 1;
+        mobs.add(stallSeller);
 
 
     }
