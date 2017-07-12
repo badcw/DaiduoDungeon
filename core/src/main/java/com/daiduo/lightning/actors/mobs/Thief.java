@@ -45,8 +45,8 @@ public class Thief extends Mob {
 	{
 		spriteClass = ThiefSprite.class;
 		
-		HP = HT = 20;
-		defenseSkill = 12;
+		HP = HT = 40;
+		defenseSkill = 8;
 		
 		EXP = 5;
 		maxLvl = 10;

@@ -32,8 +32,8 @@ public class NewbornElemental extends Elemental {
 	{
 		spriteClass = NewbornElementalSprite.class;
 
-		HT = 65;
-		HP = HT/2; //32
+		HT = HP = 65;
+
 
 		defenseSkill = 12;
 

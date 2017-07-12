@@ -32,7 +32,7 @@ public class Albino extends Rat {
 	{
 		spriteClass = AlbinoSprite.class;
 		
-		HP = HT = 15;
+		HP = HT = 25;
 	}
 	
 	@Override

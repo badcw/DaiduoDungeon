@@ -36,7 +36,7 @@ public class Bat extends Mob {
 	{
 		spriteClass = BatSprite.class;
 		
-		HP = HT = 30;
+		HP = HT = 10;
 		defenseSkill = 15;
 		baseSpeed = 2f;
 		
@@ -51,7 +51,7 @@ public class Bat extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 5, 18 );
+		return Random.NormalIntRange( 10, 22 );
 	}
 	
 	@Override

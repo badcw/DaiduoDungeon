@@ -42,7 +42,7 @@ public class Monk extends Mob {
 	{
 		spriteClass = MonkSprite.class;
 		
-		HP = HT = 70;
+		HP = HT = 90;
 		defenseSkill = 30;
 		
 		EXP = 11;
@@ -56,7 +56,7 @@ public class Monk extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 12, 25 );
+		return Random.NormalIntRange( 20, 35 );
 	}
 	
 	@Override
@@ -66,7 +66,7 @@ public class Monk extends Mob {
 	
 	@Override
 	protected float attackDelay() {
-		return 0.5f;
+		return 0.333f;
 	}
 	
 	@Override

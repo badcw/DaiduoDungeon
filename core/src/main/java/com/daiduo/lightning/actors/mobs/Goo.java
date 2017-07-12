@@ -56,13 +56,13 @@ import java.util.HashSet;
 public class Goo extends Mob {
 
 	{
-		HP = HT = 100;
+		HP = HT = 200;
 		EXP = 10;
-		defenseSkill = 8;
+		defenseSkill = 10;
 		spriteClass = GooSprite.class;
 
 		loot = new LloydsBeacon().identify();
-		lootChance = 0.333f;
+		lootChance = 1f;
 
 		properties.add(Property.BOSS);
 		properties.add(Property.DEMONIC);
@@ -90,7 +90,7 @@ public class Goo extends Mob {
 
 	@Override
 	public int attackSkill( Char target ) {
-		int attack = 10;
+		int attack = 8;
 		if (HP*2 <= HT) attack = 15;
 		if (pumpedUp > 0) attack *= 2;
 		return attack;

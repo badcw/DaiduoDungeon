@@ -66,4 +66,10 @@ public class Dart extends MissileWeapon {
 	public int price() {
 		return quantity * 2;
 	}
+
+	@Override
+	public int STRReq() {
+		return 0;
+	}
+
 }

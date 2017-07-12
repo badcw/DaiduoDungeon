@@ -109,6 +109,8 @@ public enum HeroClass {
 	}
 
 	private static void initWarrior( Hero hero ) {
+		int STR = 9;
+		hero.STR = STR;
 		(hero.belongings.weapon = new WornShortsword()).identify();
 		Dart darts = new Dart( 8 );
 		darts.identify().collect();

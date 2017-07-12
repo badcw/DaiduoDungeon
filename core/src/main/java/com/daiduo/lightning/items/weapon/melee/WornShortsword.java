@@ -30,4 +30,10 @@ public class WornShortsword extends MeleeWeapon {
 		tier = 1;
 	}
 
+	@Override
+	public int STRReq() {
+       return 9;
+	}
+
+
 }
