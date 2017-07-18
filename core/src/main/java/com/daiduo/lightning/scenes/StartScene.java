@@ -33,6 +33,9 @@ import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.ui.Archs;
 import com.daiduo.lightning.ui.ExitButton;
 import com.daiduo.lightning.ui.Icons;
+import com.daiduo.lightning.ui.LanguageButton;
+import com.daiduo.lightning.ui.Page;
+import com.daiduo.lightning.ui.PageButton;
 import com.daiduo.lightning.ui.RedButton;
 import com.daiduo.lightning.ui.RenderedTextMultiline;
 import com.daiduo.lightning.windows.WndChallenges;
@@ -147,6 +150,7 @@ public class StartScene extends PixelScene {
 		};
 		add( btnLoad );
 
+
 		float centralHeight = buttonY - title.y - title.height();
 
 		HeroClass[] classes = {
@@ -192,6 +196,13 @@ public class StartScene extends PixelScene {
 					top + shieldH - challenge.height()/2 );
 			align(challenge);
 			add( challenge );
+
+			PageButton page = new PageButton();
+			page.setPos(
+					w - challenge.width()/2,
+					top + shieldH - challenge.height()/2 );
+			align(page);
+			add( page );
 
 		}
 
