@@ -1,6 +1,10 @@
 package com.daiduo.lightning.ui;
 
 import com.daiduo.lightning.Assets;
+import com.daiduo.lightning.ShatteredPixelDungeon;
+import com.daiduo.lightning.scenes.BadgesScene;
+import com.daiduo.lightning.scenes.StartScene;
+import com.daiduo.lightning.scenes.StartScene2;
 import com.watabou.noosa.Image;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.noosa.ui.Button;
@@ -46,6 +50,12 @@ public class PageButton extends Button {
     protected void onTouchUp() {
         image.resetColor();
     }
+
+    @Override
+    protected void onClick() {
+        ShatteredPixelDungeon.switchNoFade(StartScene.class );
+    }
+
 
 
 }

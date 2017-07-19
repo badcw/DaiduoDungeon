@@ -29,6 +29,7 @@ import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.ui.Archs;
 import com.daiduo.lightning.ui.ChangesButton;
 import com.daiduo.lightning.ui.ExitButton;
+import com.daiduo.lightning.ui.PageButton;
 import com.daiduo.lightning.ui.PrefsButton;
 import com.watabou.noosa.BitmapText;
 import com.watabou.noosa.Camera;
@@ -99,12 +100,9 @@ public class TitleScene extends PixelScene {
 		};
 		add(btnBadges);
 		
-		DashboardItem btnAbout = new DashboardItem( Messages.get(this, "about"), 1 ) {
-			@Override
-			protected void onClick() {
-			}
+		DashboardItem PageButton = new DashboardItem( Messages.get(this, "about"), 1 ) {
 		};
-		add( btnAbout );
+		add( PageButton );
 		
 		DashboardItem btnPlay = new DashboardItem( Messages.get(this, "play"), 0 ) {
 			@Override
@@ -126,12 +124,12 @@ public class TitleScene extends PixelScene {
 			btnRankings     .setPos( w / 2 - btnRankings.width(), topRegion );
 			btnBadges       .setPos( w / 2, topRegion );
 			btnPlay         .setPos( btnRankings.left() - btnPlay.width(), topRegion );
-			btnAbout        .setPos( btnBadges.right(), topRegion );
+			PageButton      .setPos( btnBadges.right(), topRegion );
 		} else {
 			btnPlay.setPos( w / 2 - btnPlay.width(), topRegion );
 			btnRankings.setPos( w / 2, btnPlay.top() );
 			btnBadges.setPos( w / 2 - btnBadges.width(), btnPlay.top() + DashboardItem.SIZE );
-			btnAbout.setPos( w / 2, btnBadges.top() );
+			PageButton.setPos( w / 2, btnBadges.top() );
 		}
 
 		BitmapText version = new BitmapText( Game.version + "", pixelFont );
@@ -152,6 +150,10 @@ public class TitleScene extends PixelScene {
 		ExitButton btnExit = new ExitButton();
 		btnExit.setPos( w - btnExit.width(), 0 );
 		add( btnExit );
+
+		PageButton btnPage = new PageButton();
+		btnPage.setPos( 0, 16 );
+		add( btnPage );
 
 		fadeIn();
 	}
@@ -215,4 +217,5 @@ public class TitleScene extends PixelScene {
 			image.resetColor();
 		}
 	}
+
 }

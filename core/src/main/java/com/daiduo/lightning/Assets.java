@@ -42,9 +42,9 @@ public class Assets {
 	public static final String BOSSHP   = "boss_hp.png";
 	public static final String PAGES    = "pages.png";
 
-	public static final String WARRIOR	= "warrior.png";
+	public static final String WARRIOR	= "486.png";
 	public static final String MAGE		= "mage.png";
-	public static final String ROGUE	= "rogue.png";
+	public static final String ROGUE	= "萝莉.png";
 	public static final String HUNTRESS	= "ranger.png";
 	public static final String AVATARS	= "avatars.png";
 	public static final String PET		= "pet.png";
