@@ -21,10 +21,13 @@
 package com.daiduo.lightning.sprites;
 
 import android.graphics.RectF;
+import android.widget.Switch;
+
 import com.daiduo.lightning.Assets;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.actors.hero.Hero;
 import com.daiduo.lightning.actors.hero.HeroClass;
+import com.daiduo.lightning.messages.Messages;
 import com.watabou.gltextures.SmartTexture;
 import com.watabou.gltextures.TextureCache;
 import com.watabou.noosa.Camera;
@@ -32,6 +35,11 @@ import com.watabou.noosa.Image;
 import com.watabou.noosa.TextureFilm;
 import com.watabou.utils.Callback;
 import com.watabou.utils.PointF;
+
+import java.security.KeyStore;
+
+import static com.daiduo.lightning.actors.hero.HeroClass.WARRIOR;
+import static com.daiduo.lightning.sprites.ItemSprite.film;
 
 public class HeroSprite extends CharSprite {
 	
@@ -62,29 +70,53 @@ public class HeroSprite extends CharSprite {
 	public void updateArmor() {
 
 		TextureFilm film = new TextureFilm( tiers(), ((Hero)ch).tier(), FRAME_WIDTH, FRAME_HEIGHT );
-		
-		idle = new Animation( 1, true );
-		idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1 );
-		
-		run = new Animation( RUN_FRAMERATE, true );
-		run.frames( film, 2, 3, 4, 5, 6, 7 );
-		
-		die = new Animation( 20, false );
-		die.frames( film, 8, 9, 10, 11, 12, 11 );
-		
-		attack = new Animation( 15, false );
-		attack.frames( film, 13, 14, 15, 0 );
-		
-		zap = attack.clone();
-		
-		operate = new Animation( 8, false );
-		operate.frames( film, 16, 17, 16, 17 );
-		
-		fly = new Animation( 1, true );
-		fly.frames( film, 18 );
 
-		read = new Animation( 20, false );
-		read.frames( film, 19, 20, 20, 20, 20, 20, 20, 20, 20, 19 );
+
+				idle = new Animation( 1, true );
+                idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1 );
+
+                run = new Animation( RUN_FRAMERATE, true );
+                run.frames( film, 2, 3, 4, 5, 6, 7 );
+
+                die = new Animation( 20, false );
+		        switch(Dungeon.hero.heroClass) {
+			        case WARRIOR:
+				        die.frames(film, 8, 9, 10, 11, 12, 11);
+				        break;
+			        case ROGUE:
+				        die.frames(film, 8, 9, 10, 10);
+				        break;
+			        case HUNTRESS:
+				        die.frames(film, 8, 9, 10, 11, 12, 11);
+				        break;
+			        case MAGE:
+				        die.frames(film, 8, 9, 10, 11, 12, 11);
+				        break;
+		        }
+
+				attack = new Animation(15, false);
+				attack.frames(film, 13, 14, 15, 0);
+
+                zap = attack.clone();
+
+                operate = new Animation( 8, false );
+                operate.frames( film, 16, 17, 16, 17 );
+
+                fly = new Animation( 1, true );
+                fly.frames( film, 18 );
+
+                read = new Animation( 20, false );
+	            switch(Dungeon.hero.heroClass) {
+	            	case HUNTRESS:
+	            	case MAGE:
+	            	case WARRIOR:
+	            		read.frames(film, 19, 20, 20, 20, 20, 20, 20, 20, 20, 19);
+	            		break;
+	            	case ROGUE:
+	            		read.frames(film, 18, 19, 19, 19, 19, 19, 19, 19, 19, 18);
+	            		break;
+
+				}
 	}
 	
 	@Override
