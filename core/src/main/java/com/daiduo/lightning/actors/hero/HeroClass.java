@@ -87,9 +87,18 @@ public enum HeroClass {
 	private static void initCommon( Hero hero ) {
 
 		Transpotation trans = new Transpotation();
-		(hero.belongings.misc1 = trans).identify();
-		hero.belongings.misc1.activate( hero );
-
+		switch (Dungeon.hero.heroClass) {
+			case WARRIOR:
+			case MAGE:
+			case HUNTRESS:
+				(hero.belongings.misc1 = trans).identify();
+				hero.belongings.misc1.activate(hero);
+				break;
+			case ROGUE:
+				(hero.belongings.misc2 = trans).identify();
+				hero.belongings.misc2.activate(hero);
+				break;
+		}
 
 		if (!Dungeon.isChallenged(Challenges.NO_ARMOR))
 			(hero.belongings.armor = new TaijiArmor()).identify();

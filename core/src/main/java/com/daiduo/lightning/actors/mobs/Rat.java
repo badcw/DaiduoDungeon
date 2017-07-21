@@ -21,6 +21,8 @@
 package com.daiduo.lightning.actors.mobs;
 
 import com.daiduo.lightning.actors.Char;
+import com.daiduo.lightning.items.artifacts.LloydsBeacon;
+import com.daiduo.lightning.items.artifacts.Transpotation;
 import com.daiduo.lightning.sprites.RatSprite;
 import com.watabou.utils.Random;
 

@@ -41,7 +41,9 @@ import com.daiduo.lightning.effects.Surprise;
 import com.daiduo.lightning.effects.Wound;
 import com.daiduo.lightning.items.Generator;
 import com.daiduo.lightning.items.Item;
+import com.daiduo.lightning.items.artifacts.LloydsBeacon;
 import com.daiduo.lightning.items.artifacts.TimekeepersHourglass;
+import com.daiduo.lightning.items.artifacts.Transpotation;
 import com.daiduo.lightning.items.rings.RingOfAccuracy;
 import com.daiduo.lightning.items.rings.RingOfWealth;
 import com.daiduo.lightning.levels.Level;
@@ -60,6 +62,9 @@ public abstract class Mob extends Char {
 	{
 		name = Messages.get(this, "name");
 		actPriority = 2; //hero gets priority over mobs.
+
+		loot = new Transpotation().identify();
+		lootChance = 0.01f;
 	}
 	
 	private static final String	TXT_DIED	= "You hear something died in the distance";
