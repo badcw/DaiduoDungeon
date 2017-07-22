@@ -22,14 +22,12 @@ public enum Page {
         Image icon = new Image( Assets.PAGES );
         switch (type) {
             case ONE:
-                icon.frame( icon.texture.uvRect( 0, 0, 8, 8 ) );
+                icon.frame( icon.texture.uvRect( 0, 0, 16, 16  ) );
                 break;
             case TWO:
-                icon.frame( icon.texture.uvRect( 0, 0, 16, 16 ) );
+                icon.frame( icon.texture.uvRect( 16, 0, 32, 16 ) );
                 break;
-            case THREE:
-                icon.frame( icon.texture.uvRect( 0, 8, 7, 13 ) );
-                break;
+
         }
         return icon;
     }

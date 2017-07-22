@@ -48,7 +48,8 @@ public enum HeroClass {
 	WARRIOR( "warrior" ),
 	MAGE( "mage" ),
 	ROGUE( "rogue" ),
-	HUNTRESS( "huntress" );
+	HUNTRESS( "huntress" ),
+	ANG("ang");
 
 	private String title;
 
@@ -77,6 +78,10 @@ public enum HeroClass {
 
 			case HUNTRESS:
 				initHuntress( hero );
+				break;
+
+			case ANG:
+				initAng( hero );
 				break;
 		}
 
@@ -188,6 +193,28 @@ public enum HeroClass {
 
 		new PotionOfMindVision().setKnown();
 	}
+
+	private static void initAng( Hero hero ) {
+		int STR = 9;
+		hero.STR = STR;
+		(hero.belongings.weapon = new WornShortsword()).identify();
+		Dart darts = new Dart( 8 );
+		darts.identify().collect();
+
+		if ( Badges.isUnlocked(Badges.Badge.TUTORIAL_WARRIOR) ){
+			if (!Dungeon.isChallenged(Challenges.NO_ARMOR))
+				hero.belongings.armor.affixSeal(new BrokenSeal());
+			Dungeon.quickslot.setSlot(0, darts);
+		} else {
+			if (!Dungeon.isChallenged(Challenges.NO_ARMOR)) {
+				BrokenSeal seal = new BrokenSeal();
+				seal.collect();
+				Dungeon.quickslot.setSlot(0, seal);
+			}
+			Dungeon.quickslot.setSlot(1, darts);
+		}
+
+	}
 	
 	public String title() {
 		return Messages.get(HeroClass.class, title);
@@ -204,6 +231,8 @@ public enum HeroClass {
 			return Assets.ROGUE;
 		case HUNTRESS:
 			return Assets.HUNTRESS;
+		case ANG:
+			return Assets.WARRIOR;
 		}
 		
 		return null;
@@ -244,6 +273,14 @@ public enum HeroClass {
 					Messages.get(HeroClass.class, "huntress_perk3"),
 					Messages.get(HeroClass.class, "huntress_perk4"),
 					Messages.get(HeroClass.class, "huntress_perk5"),
+			};
+		case ANG:
+			return new String[]{
+					Messages.get(HeroClass.class, "warrior_perk1"),
+					Messages.get(HeroClass.class, "warrior_perk2"),
+					Messages.get(HeroClass.class, "warrior_perk3"),
+					Messages.get(HeroClass.class, "warrior_perk4"),
+					Messages.get(HeroClass.class, "warrior_perk5"),
 			};
 		}
 		

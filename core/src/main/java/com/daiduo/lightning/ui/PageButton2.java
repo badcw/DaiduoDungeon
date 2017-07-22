@@ -13,11 +13,11 @@ import com.watabou.noosa.ui.Button;
  * Created by badcw on 2017/7/17.
  */
 
-public class PageButton extends Button {
+public class PageButton2 extends Button {
 
     protected Image image;
 
-    public PageButton() {
+    public PageButton2() {
         super();
 
         width = image.width;
@@ -28,7 +28,7 @@ public class PageButton extends Button {
     protected void createChildren() {
         super.createChildren();
 
-        image = Page.ONE.get();
+        image = Page.TWO.get();
         add( image );
 
     }
@@ -54,7 +54,7 @@ public class PageButton extends Button {
 
     @Override
     protected void onClick() {
-        ShatteredPixelDungeon.switchNoFade(StartScene2.class );
+        ShatteredPixelDungeon.switchNoFade(StartScene.class );
     }
 
 

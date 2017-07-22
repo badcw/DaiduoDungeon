@@ -146,7 +146,7 @@ public class TitleScene extends PixelScene {
 		Button changes = new ChangesButton();
 		changes.setPos( w-changes.width(), h - version.height() - changes.height());
 		add( changes );
-		
+
 		PrefsButton btnPrefs = new PrefsButton();
 		btnPrefs.setPos( 0, 0 );
 		add( btnPrefs );
@@ -154,10 +154,6 @@ public class TitleScene extends PixelScene {
 		ExitButton btnExit = new ExitButton();
 		btnExit.setPos( w - btnExit.width(), 0 );
 		add( btnExit );
-
-		PageButton btnPage = new PageButton();
-		btnPage.setPos( 0, 16 );
-		add( btnPage );
 
 		fadeIn();
 	}

@@ -10,7 +10,7 @@ import com.watabou.utils.Bundle;
 
 public class Skills implements Bundlable{
 
-    public boolean learned;
+    public boolean learned = false;
     public String name = Messages.get(this, "name");
 
     public boolean isLearned() {

@@ -20,7 +20,9 @@
  */
 package com.daiduo.lightning.ui;
 
+import android.graphics.Bitmap;
 import android.opengl.GLES20;
+import android.util.DisplayMetrics;
 
 import com.daiduo.lightning.Assets;
 import com.watabou.noosa.Game;
@@ -30,6 +32,7 @@ import com.watabou.noosa.NoosaScriptNoLighting;
 import com.watabou.noosa.SkinnedBlock;
 import com.watabou.noosa.ui.Component;
 
+import static android.R.attr.bitmap;
 import static com.watabou.noosa.Game.dispHeight;
 import static com.watabou.noosa.Game.dispWidth;
 
@@ -40,7 +43,8 @@ public class Archs extends Component {
 
 	@Override
 	protected void createChildren() {
-		arcsBg = new Image(asset, 0, 0, dispWidth, dispHeight);
-		add(arcsBg);
+
+		arcsBg = new Image( asset, 0, 0, dispHeight, dispWidth);
+		add( arcsBg );
 	}
 }

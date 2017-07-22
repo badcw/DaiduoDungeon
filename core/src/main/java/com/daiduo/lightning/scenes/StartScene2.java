@@ -13,6 +13,7 @@ import com.daiduo.lightning.ui.Archs;
 import com.daiduo.lightning.ui.ExitButton;
 import com.daiduo.lightning.ui.Icons;
 import com.daiduo.lightning.ui.PageButton;
+import com.daiduo.lightning.ui.PageButton2;
 import com.daiduo.lightning.ui.RedButton;
 import com.daiduo.lightning.ui.RenderedTextMultiline;
 import com.daiduo.lightning.windows.WndChallenges;
@@ -57,8 +58,7 @@ public class StartScene2 extends PixelScene {
     private GameButton btnLoad;
     private GameButton btnNewGame;
 
-    private boolean huntressUnlocked;
-    private Group unlock;
+
 
     public static HeroClass curClass;
 
@@ -173,6 +173,7 @@ public class StartScene2 extends PixelScene {
                 align(shield);
             }
 
+
             ChallengeButton challenge = new ChallengeButton();
             challenge.setPos(
                     w / 2 - challenge.width() / 2,
@@ -182,19 +183,12 @@ public class StartScene2 extends PixelScene {
         }
 
 
-            unlock = new Group();
-            add(unlock);
-
-            if (!(huntressUnlocked = Badges.isUnlocked(Badges.Badge.BOSS_SLAIN_3))) {
-
-                RenderedTextMultiline text = PixelScene.renderMultiline(Messages.get(this, "unlock"), 9);
-                text.maxWidth((int) width);
-                text.hardlight(0xFFFF00);
-                text.setPos(w / 2 - text.width() / 2, (bottom - BUTTON_HEIGHT) + (BUTTON_HEIGHT - text.height()) / 2);
-                align(text);
-                unlock.add(text);
-
-            }
+            float shieldW = width / 2;
+            float shieldH = Math.min(centralHeight / 2, shieldW * 1.2f);
+            PageButton2 pageButton = new PageButton2();
+            pageButton.setPos (0 , top + shieldH - pageButton.height() / 2);
+            align(pageButton);
+            add(pageButton);
 
             ExitButton btnExit = new ExitButton();
             btnExit.setPos(Camera.main.width - btnExit.width(), 0);
@@ -225,7 +219,7 @@ public class StartScene2 extends PixelScene {
 
         }
 
-    private void updateClass( HeroClass cl ) {
+    public void updateClass( HeroClass cl ) {
 
         if (curClass == cl) {
             add( new WndClass( cl ) );
@@ -237,9 +231,7 @@ public class StartScene2 extends PixelScene {
         }
         shields.get( curClass = cl ).highlight( true );
 
-        if (cl != HeroClass.HUNTRESS || huntressUnlocked) {
 
-            unlock.visible = false;
 
             GamesInProgress.Info info = GamesInProgress.check( curClass );
             if (info != null) {
@@ -264,16 +256,10 @@ public class StartScene2 extends PixelScene {
                 btnNewGame.setRect( buttonX, buttonY, Camera.main.width - buttonX * 2, BUTTON_HEIGHT );
             }
 
-        } else {
 
-            unlock.visible = true;
-            btnLoad.visible = false;
-            btnNewGame.visible = false;
-
-        }
     }
 
-    private void startNewGame() {
+    public void startNewGame() {
 
         Dungeon.hero = null;
         InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
@@ -291,7 +277,7 @@ public class StartScene2 extends PixelScene {
         ShatteredPixelDungeon.switchNoFade( TitleScene.class );
     }
 
-    private static class GameButton extends RedButton {
+    public static class GameButton extends RedButton {
 
         private static final int SECONDARY_COLOR_N    = 0xCACFC2;
         private static final int SECONDARY_COLOR_H    = 0xFFFF88;
@@ -335,7 +321,7 @@ public class StartScene2 extends PixelScene {
         }
     }
 
-    private class ClassShield extends Button {
+    public class ClassShield extends Button {
 
         private static final float MIN_BRIGHTNESS	= 0.6f;
 
@@ -452,7 +438,7 @@ public class StartScene2 extends PixelScene {
         }
     }
 
-    private class ChallengeButton extends Button {
+    public class ChallengeButton extends Button {
 
         private Image image;
 
