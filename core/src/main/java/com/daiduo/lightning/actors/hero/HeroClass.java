@@ -22,10 +22,9 @@ package com.daiduo.lightning.actors.hero;
 
 import com.daiduo.lightning.Assets;
 import com.daiduo.lightning.Badges;
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.items.BrokenSeal;
-import com.daiduo.lightning.items.armor.ClothArmor;
 import com.daiduo.lightning.items.armor.TaijiArmor;
 import com.daiduo.lightning.items.artifacts.CloakOfShadows;
 import com.daiduo.lightning.items.artifacts.Transpotation;

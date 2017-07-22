@@ -21,7 +21,7 @@
 package com.daiduo.lightning.levels;
 
 import com.daiduo.lightning.Bones;
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.actors.Actor;
 import com.daiduo.lightning.actors.mobs.Bestiary;

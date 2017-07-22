@@ -20,7 +20,7 @@
  */
 package com.daiduo.lightning.levels.painters;
 
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.actors.blobs.Foliage;
 import com.daiduo.lightning.levels.Level;

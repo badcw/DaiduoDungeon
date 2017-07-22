@@ -26,6 +26,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.messages.Languages;
 import com.daiduo.lightning.scenes.GameScene;
 import com.daiduo.lightning.scenes.PixelScene;

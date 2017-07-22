@@ -21,7 +21,7 @@
 package com.daiduo.lightning.actors.buffs;
 
 import com.daiduo.lightning.Badges;
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.actors.hero.Hero;
 import com.daiduo.lightning.actors.hero.HeroClass;

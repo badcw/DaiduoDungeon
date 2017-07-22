@@ -20,7 +20,7 @@
  */
 package com.daiduo.lightning.windows;
 
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.ShatteredPixelDungeon;
 import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.scenes.PixelScene;

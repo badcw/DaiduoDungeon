@@ -21,7 +21,7 @@
 package com.daiduo.lightning.actors.mobs;
 
 import com.daiduo.lightning.Badges;
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.ShatteredPixelDungeon;
 import com.daiduo.lightning.Statistics;
@@ -41,7 +41,6 @@ import com.daiduo.lightning.effects.Surprise;
 import com.daiduo.lightning.effects.Wound;
 import com.daiduo.lightning.items.Generator;
 import com.daiduo.lightning.items.Item;
-import com.daiduo.lightning.items.artifacts.LloydsBeacon;
 import com.daiduo.lightning.items.artifacts.TimekeepersHourglass;
 import com.daiduo.lightning.items.artifacts.Transpotation;
 import com.daiduo.lightning.items.rings.RingOfAccuracy;
@@ -64,7 +63,7 @@ public abstract class Mob extends Char {
 		actPriority = 2; //hero gets priority over mobs.
 
 		loot = new Transpotation().identify();
-		lootChance = 0.01f;
+		lootChance = 1f;
 	}
 	
 	private static final String	TXT_DIED	= "You hear something died in the distance";

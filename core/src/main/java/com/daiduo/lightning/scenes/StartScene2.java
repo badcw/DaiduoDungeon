@@ -485,7 +485,6 @@ public class StartScene2 extends PixelScene {
 
         @Override
         protected void onClick() {
-            if (Badges.isUnlocked( Badges.Badge.VICTORY )) {
                 StartScene2.this.add(new WndChallenges(ShatteredPixelDungeon.challenges(), true) {
                     public void onBackPressed() {
                         super.onBackPressed();
@@ -493,9 +492,7 @@ public class StartScene2 extends PixelScene {
                                 Icons.CHALLENGE_ON :Icons.CHALLENGE_OFF ) );
                     }
                 } );
-            } else {
-                StartScene2.this.add( new WndMessage( Messages.get(StartScene.class, "need_to_win") ) );
-            }
+
         }
 
         @Override

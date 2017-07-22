@@ -60,6 +60,7 @@ public class Messages {
 
 	private static String[] prop_files = new String[]{
 			"com.daiduo.lightning.messages.actors.actors",
+			"com.daiduo.lightning.messages.classes.classes",
 			"com.daiduo.lightning.messages.items.items",
 			"com.daiduo.lightning.messages.levels.levels",
 			"com.daiduo.lightning.messages.plants.plants",

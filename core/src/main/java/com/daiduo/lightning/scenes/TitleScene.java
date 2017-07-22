@@ -100,9 +100,13 @@ public class TitleScene extends PixelScene {
 		};
 		add(btnBadges);
 		
-		DashboardItem PageButton = new DashboardItem( Messages.get(this, "about"), 1 ) {
+		DashboardItem btnSettings = new DashboardItem( Messages.get(this, "settings"), 1 ) {
+			@Override
+			protected void onClick() {
+				ShatteredPixelDungeon.switchNoFade( SettingsScene.class );
+			}
 		};
-		add( PageButton );
+		add( btnSettings );
 		
 		DashboardItem btnPlay = new DashboardItem( Messages.get(this, "play"), 0 ) {
 			@Override
@@ -124,12 +128,12 @@ public class TitleScene extends PixelScene {
 			btnRankings     .setPos( w / 2 - btnRankings.width(), topRegion );
 			btnBadges       .setPos( w / 2, topRegion );
 			btnPlay         .setPos( btnRankings.left() - btnPlay.width(), topRegion );
-			PageButton      .setPos( btnBadges.right(), topRegion );
+			btnSettings      .setPos( btnBadges.right(), topRegion );
 		} else {
 			btnPlay.setPos( w / 2 - btnPlay.width(), topRegion );
 			btnRankings.setPos( w / 2, btnPlay.top() );
 			btnBadges.setPos( w / 2 - btnBadges.width(), btnPlay.top() + DashboardItem.SIZE );
-			PageButton.setPos( w / 2, btnBadges.top() );
+			btnSettings.setPos( w / 2, btnBadges.top() );
 		}
 
 		BitmapText version = new BitmapText( Game.version + "", pixelFont );

@@ -21,7 +21,7 @@
 package com.daiduo.lightning.levels;
 
 import com.daiduo.lightning.Assets;
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.DungeonTilemap;
 import com.daiduo.lightning.Statistics;

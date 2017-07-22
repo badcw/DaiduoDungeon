@@ -20,7 +20,7 @@
  */
 package com.daiduo.lightning.windows;
 
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.actors.mobs.npcs.Ghost;
 import com.daiduo.lightning.items.Item;

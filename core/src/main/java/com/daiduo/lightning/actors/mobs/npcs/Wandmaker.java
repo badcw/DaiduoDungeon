@@ -20,7 +20,7 @@
  */
 package com.daiduo.lightning.actors.mobs.npcs;
 
-import com.daiduo.lightning.Challenges;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.Journal;
 import com.daiduo.lightning.actors.Char;
