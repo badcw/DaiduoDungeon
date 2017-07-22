@@ -5,9 +5,12 @@ import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.ui.Archs;
 import com.daiduo.lightning.ui.CheckBox;
+import com.daiduo.lightning.ui.OptionSlider;
 import com.daiduo.lightning.ui.Window;
 import com.watabou.noosa.Camera;
+import com.watabou.noosa.Group;
 import com.watabou.noosa.RenderedText;
+import com.watabou.noosa.audio.Music;
 
 import java.util.ArrayList;
 
@@ -32,69 +35,21 @@ public class SettingsScene extends BlankScene {
         archs.setSize(w, h);
         add(archs);
 
-
         fadeIn();
     }
-
-        public class WndChallenges extends Window {
-
-            private static final int WIDTH = 108;
-            private static final int TTL_HEIGHT = 12;
-            private static final int BTN_HEIGHT = 18;
-            private static final int GAP = 1;
-
-            private boolean editable;
-            private ArrayList<CheckBox> boxes;
-
-            public WndChallenges(int checked, boolean editable) {
-
-                super();
-
-                this.editable = editable;
-
-                RenderedText title = PixelScene.renderText(Messages.get(this, "title"), 9);
-                title.hardlight(TITLE_COLOR);
-                title.x = (WIDTH - title.width()) / 2;
-                title.y = (TTL_HEIGHT - title.height()) / 2;
-                PixelScene.align(title);
-                add(title);
-
-                boxes = new ArrayList<>();
-
-                float pos = TTL_HEIGHT;
-                for (int i = 0; i < Challenges.NAME_IDS.length; i++) {
-
-                    CheckBox cb = new CheckBox(Messages.get(Challenges.class, Challenges.NAME_IDS[i]));
-                    cb.checked((checked & Challenges.MASKS[i]) != 0);
-                    cb.active = editable;
-
-                    if (i > 0) {
-                        pos += GAP;
-                    }
-                    cb.setRect(0, pos, WIDTH, BTN_HEIGHT);
-                    pos = cb.bottom();
-
-                    add(cb);
-                    boxes.add(cb);
+    private class AudioTab extends Group {
+        public AudioTab() {
+            OptionSlider musicVol = new OptionSlider(Messages.get(this, "music_vol"), "0", "10", 0, 10) {
+                @Override
+                protected void onChange() {
+                    Music.INSTANCE.volume(getSelectedValue() / 10f);
+                    ShatteredPixelDungeon.musicVol(getSelectedValue());
                 }
+            };
+            musicVol.setSelectedValue(ShatteredPixelDungeon.musicVol());
+            musicVol.setRect(0, 0, 112, 25);
+            add(musicVol);
 
-                resize(WIDTH, (int) pos);
-            }
-
-            @Override
-            public void onBackPressed() {
-
-                if (editable) {
-                    int value = 0;
-                    for (int i = 0; i < boxes.size(); i++) {
-                        if (boxes.get(i).checked()) {
-                            value |= Challenges.MASKS[i];
-                        }
-                    }
-                    ShatteredPixelDungeon.challenges(value);
-                }
-
-                super.onBackPressed();
-            }
         }
+    }
 }

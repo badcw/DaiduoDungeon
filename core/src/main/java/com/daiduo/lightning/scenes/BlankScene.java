@@ -27,5 +27,6 @@ public class BlankScene extends PixelScene {
         ShatteredPixelDungeon.switchNoFade(TitleScene.class);
     }
 
+
 }
 
