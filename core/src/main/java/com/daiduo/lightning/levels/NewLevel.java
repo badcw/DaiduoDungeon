@@ -1,11 +1,21 @@
 package com.daiduo.lightning.levels;
 
 import com.daiduo.lightning.Assets;
+import com.daiduo.lightning.Dungeon;
+import com.daiduo.lightning.ShatteredPixelDungeon;
 import com.daiduo.lightning.actors.mobs.Mob;
 import com.daiduo.lightning.actors.mobs.npcs.Shopkeeper;
 import com.daiduo.lightning.actors.mobs.npcs.StallSeller;
 import com.daiduo.lightning.items.Gold;
+import com.daiduo.lightning.levels.features.Chasm;
 import com.daiduo.lightning.levels.painters.Painter;
+import com.daiduo.lightning.messages.Messages;
+import com.daiduo.lightning.scenes.GameScene;
+import com.daiduo.lightning.scenes.InterlevelScene;
+import com.daiduo.lightning.scenes.IntroScene;
+import com.daiduo.lightning.scenes.StartScene;
+import com.daiduo.lightning.windows.WndOptions;
+import com.watabou.noosa.Game;
 
 import java.util.Arrays;
 
@@ -67,10 +77,11 @@ public class NewLevel extends Level {
 
 
         feeling = Feeling.NONE;
-
-
         return true;
+        
     }
+
+
 
     @Override
     protected void decorate() {

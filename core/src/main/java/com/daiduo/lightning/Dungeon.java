@@ -35,6 +35,7 @@ import com.daiduo.lightning.actors.mobs.npcs.Wandmaker;
 import com.daiduo.lightning.items.Ankh;
 import com.daiduo.lightning.items.Generator;
 import com.daiduo.lightning.items.Item;
+import com.daiduo.lightning.items.armor.WarriorArmor;
 import com.daiduo.lightning.items.potions.Potion;
 import com.daiduo.lightning.items.rings.Ring;
 import com.daiduo.lightning.items.scrolls.Scroll;
@@ -198,25 +199,31 @@ public class Dungeon {
 	}
 	
 	public static Level newLevel() {
-		
+
 		Dungeon.level = null;
 		Actor.clear();
-		
+
 		depth++;
 		if (depth > Statistics.deepestFloor) {
 			Statistics.deepestFloor = depth;
-			
+
 			if (Statistics.qualifiedForNoKilling) {
 				Statistics.completedWithNoKilling = true;
 			} else {
 				Statistics.completedWithNoKilling = false;
 			}
 		}
-		
+
 		Level level;
+
+
 		switch (depth) {
 		case 0:
-			level = new NewLevel();
+			if ( Dungeon.hero.heroClass == HeroClass.WARRIOR || Dungeon.hero.heroClass== HeroClass.ROGUE){
+				level = new NewLevel();
+			}else {
+				level = new FirstLevel();
+			}
 			break;
 		case 1:
 		case 2:
@@ -275,9 +282,9 @@ public class Dungeon {
 
 		visible = new boolean[level.length()];
 		level.create();
-		
+
 		Statistics.qualifiedForNoKilling = !bossLevel();
-		
+
 		return level;
 	}
 	

@@ -1,15 +1,137 @@
 package com.daiduo.lightning.levels;
 
 
+import com.daiduo.lightning.Assets;
+import com.daiduo.lightning.Bones;
+import com.daiduo.lightning.actors.Actor;
+import com.daiduo.lightning.actors.mobs.Mob;
+import com.daiduo.lightning.actors.mobs.Tengu;
 import com.daiduo.lightning.actors.mobs.npcs.Shopkeeper;
+import com.daiduo.lightning.actors.mobs.npcs.StallSeller;
+import com.daiduo.lightning.items.Heap;
+import com.daiduo.lightning.items.Item;
+import com.daiduo.lightning.items.keys.IronKey;
+import com.daiduo.lightning.scenes.GameScene;
+import com.watabou.utils.Bundlable;
+import com.watabou.utils.Bundle;
+import com.watabou.utils.PathFinder;
+import com.watabou.utils.Random;
+
+import java.util.ArrayList;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import static android.os.Build.VERSION_CODES.M;
+import static com.daiduo.lightning.Assets.TENGU;
 
 public class FirstLevel extends Level {
 
-    private Shopkeeper shopkeeper;
-    
-    public static final int SIZE=7;
-    private int pedestal;
+    private enum State{
+        START
+    }
     private State state;
+    private ArrayList<Item> storedItems = new ArrayList<>();
+    private static final String STATE	        = "state";
+    private static final String STORED_ITEMS    = "storeditems";
+
+
+    {
+        color1 = 0x801500;
+        color2 = 0xa68521;
+
+    }
+    @Override
+    public String tilesTex() {
+        return Assets.TILES_SEWERS;
+    }
+
+    @Override
+    public String waterTex() {
+        return Assets.WATER_CAVES;
+    }
+
+    @Override
+    public void storeInBundle( Bundle bundle ) {
+        super.storeInBundle(bundle);
+        bundle.put( STATE, state );
+        bundle.put( STORED_ITEMS, storedItems);
+    }
+
+    @Override
+    public void restoreFromBundle( Bundle bundle ) {
+        super.restoreFromBundle(bundle);
+        state = bundle.getEnum( STATE, State.class );
+        for (Bundlable item : bundle.getCollection(STORED_ITEMS)){
+            storedItems.add( (Item)item );
+        }
+    }
+
+    @Override
+    protected boolean build() {
+
+        map = MAP_START.clone();
+        decorate();
+
+        buildFlagMaps();
+        cleanWalls();
+
+        state = State.START;
+        entrance = 5+2*32;
+        exit = 5+28*32;
+
+
+        return true;
+    }
+
+    @Override
+    protected void decorate() {
+        //do nothing, all decorations are hard-coded.
+    }
+
+    @Override
+    protected void createMobs() {createStallSeller();
+    }
+
+    protected void createStallSeller(){
+        Mob stallSeller = new StallSeller();
+        stallSeller.pos = 7+2*32;
+        mobs.add(stallSeller);
+
+
+    }
+
+
+    public Actor respawner() {
+        return null;
+    }
+
+    @Override
+    protected void createItems() {
+    }
+
+    @Override
+    public int randomRespawnCell() {
+        return -1;
+    }
+
+    @Override
+    public String tileName( int tile ) {
+        switch (tile) {
+
+            default:
+                return super.tileName( tile );
+        }
+    }
+
+    @Override
+    public String tileDesc(int tile) {
+        switch (tile) {
+            default:
+                return super.tileDesc( tile );
+        }
+    }
+
+
 
     private static final int W = Terrain.WALL;
     private static final int D = Terrain.DOOR;
@@ -35,80 +157,30 @@ public class FirstLevel extends Level {
                     W, W, W, W, W, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, W, M, W, W, e, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, e, e, e, D, e, D, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, W, M, W, W, e, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, e, e, e, D, e, D, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, W, M, W, W, e, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, e, e, e, D, e, D, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, W, M, W, W, e, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, e, e, e, D, e, D, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, e, e, e, W, e, W, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, W, M, W, W, e, W, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, W, W, W, W, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, W, W, M, W, L, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
-                    W, W, W, T, T, T, T, T, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, W, W, M, W, D, W, M, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, W, W, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, W, W, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, W, W, e, e, X, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, W, W, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
+                    W, W, W, e, e, e, e, e, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W,
                     W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W, W};
 
-
-    {
-        color1 = 0x6a723d;
-        color2 = 0x88924c;
-    }
-
-    private enum State{
-        START
-    }
-
-    @Override
-    protected void createMobs(){
-        shopkeeper = new Shopkeeper();
-    }
-
-    @Override
-    protected void buildFlagMaps() {
-        super.buildFlagMaps();
-    }
-
-    @Override
-    protected void cleanWalls() {
-        super.cleanWalls();
-    }
-
-    @Override
-    protected void createItems() {
-
-    }
-
-    @Override
-    protected boolean build() {
-
-        map = MAP_START.clone();
-        decorate();
-
-        buildFlagMaps();
-        cleanWalls();
-
-        state = State.START;
-        entrance = 5+2*32;
-        exit = 0;
-
-        return true;
-    }
-
-    @Override
-    protected void decorate() {
-
-    }
 
 }
 
