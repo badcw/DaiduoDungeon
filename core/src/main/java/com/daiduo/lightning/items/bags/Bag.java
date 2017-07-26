@@ -20,6 +20,7 @@
  */
 package com.daiduo.lightning.items.bags;
 
+import com.daiduo.lightning.Assets;
 import com.daiduo.lightning.Badges;
 import com.daiduo.lightning.Dungeon;
 import com.daiduo.lightning.actors.Char;

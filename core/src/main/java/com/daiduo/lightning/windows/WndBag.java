@@ -76,8 +76,8 @@ public class WndBag extends WndTabbed {
 		EQUIPMENT
 	}
 
-	protected static final int COLS_P    = 4;
-	protected static final int COLS_L    = 6;
+	protected static final int COLS_P    = 6;
+	protected static final int COLS_L    = 7;
 
 	protected static final int SLOT_SIZE	= 28;
 	protected static final int SLOT_MARGIN	= 1;
@@ -313,7 +313,7 @@ public class WndBag extends WndTabbed {
 	
 	private class ItemButton extends ItemSlot {
 		
-		private static final int NORMAL		= 0x9953564D;
+		private static final int NORMAL		= 0x00000000;
 		private static final int EQUIPPED	= 0x9991938C;
 		
 		private Item item;
