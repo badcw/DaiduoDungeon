@@ -25,10 +25,12 @@ import com.daiduo.lightning.Journal.Feature;
 import com.daiduo.lightning.ShatteredPixelDungeon;
 import com.daiduo.lightning.effects.BlobEmitter;
 import com.daiduo.lightning.effects.Speck;
+import com.daiduo.lightning.items.DewVial;
 import com.daiduo.lightning.items.Generator;
 import com.daiduo.lightning.items.Generator.Category;
 import com.daiduo.lightning.items.Item;
 import com.daiduo.lightning.items.artifacts.Artifact;
+import com.daiduo.lightning.items.artifacts.Transpotation;
 import com.daiduo.lightning.items.potions.Potion;
 import com.daiduo.lightning.items.potions.PotionOfMight;
 import com.daiduo.lightning.items.potions.PotionOfStrength;
@@ -64,7 +66,9 @@ public class WaterOfTransmutation extends WellWater {
 		} else if (item instanceof Plant.Seed) {
 			item = changeSeed( (Plant.Seed)item );
 		} else if (item instanceof Artifact) {
-			item = changeArtifact( (Artifact)item );
+			item = changeArtifact((Artifact) item);
+		} else if (item instanceof DewVial) {
+			volume = 10;
 		} else {
 			item = null;
 		}
@@ -156,7 +160,9 @@ public class WaterOfTransmutation extends WellWater {
 	private Artifact changeArtifact( Artifact a ) {
 		Artifact n = Generator.randomArtifact();
 
-		if (n != null){
+		if (n instanceof Transpotation){
+			return new Transpotation();
+		}else  if (n != null){
 			n.cursedKnown = a.cursedKnown;
 			n.cursed = a.cursed;
 			n.levelKnown = a.levelKnown;
@@ -231,6 +237,7 @@ public class WaterOfTransmutation extends WellWater {
 			return n;
 		}
 	}
+
 	
 	@Override
 	public String tileDesc() {
