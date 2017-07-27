@@ -36,6 +36,15 @@ public class DarkGold extends Item {
 	public boolean isUpgradable() {
 		return false;
 	}
+
+	public DarkGold( int number ) {
+		super();
+		quantity = number;
+	}
+	
+	public DarkGold(){
+		this (1);
+	}
 	
 	@Override
 	public boolean isIdentified() {
