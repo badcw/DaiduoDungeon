@@ -1,30 +1,17 @@
 package com.daiduo.lightning.items.artifacts;
 
-import com.daiduo.lightning.Assets;
 import com.daiduo.lightning.Dungeon;
-import com.daiduo.lightning.actors.Actor;
 import com.daiduo.lightning.actors.buffs.Buff;
-import com.daiduo.lightning.actors.buffs.LockedFloor;
 import com.daiduo.lightning.actors.hero.Hero;
-import com.daiduo.lightning.actors.mobs.Mob;
+import com.daiduo.lightning.actors.hero.HeroClass;
 import com.daiduo.lightning.items.Item;
 import com.daiduo.lightning.items.scrolls.ScrollOfTeleportation;
-import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.scenes.GameScene;
 import com.daiduo.lightning.scenes.InterlevelScene;
 import com.daiduo.lightning.sprites.ItemSpriteSheet;
-import com.daiduo.lightning.ui.QuickSlotButton;
-import com.daiduo.lightning.utils.GLog;
 import com.watabou.noosa.Game;
-import com.watabou.noosa.audio.Sample;
-import com.watabou.utils.Bundle;
-import com.watabou.utils.PathFinder;
 
 import java.util.ArrayList;
-
-import static com.daiduo.lightning.items.artifacts.LloydsBeacon.AC_SET;
-import static com.daiduo.lightning.scenes.InterlevelScene.returnDepth;
-import static com.daiduo.lightning.scenes.InterlevelScene.returnPos;
 
 /**
  * Created by badcw on 2017/7/2.
@@ -38,22 +25,10 @@ public class Transpotation extends Artifact {
 
     }
 
-    private static final String DEPTH	= "depth";
-    private static final String POS		= "pos";
-
     public int returnDepth	= -1;
-    public int returnPos = 100;
-
-    @Override
-    public void storeInBundle( Bundle bundle ) {
-        super.storeInBundle( bundle );
-        bundle.put( DEPTH, returnDepth );
-        bundle.put( POS, returnPos );
-
-    }
-
-
-
+    public int returnPos1 = 100;
+    public int returnPos2 = 5+2*32;
+    
     @Override
     public ArrayList<String> actions( Hero hero ) {
         ArrayList<String> actions = super.actions( hero );
@@ -79,8 +54,13 @@ public class Transpotation extends Artifact {
 
                     InterlevelScene.mode = InterlevelScene.Mode.RETURN;
                     InterlevelScene.returnDepth = returnDepth;
-                    InterlevelScene.returnPos = returnPos;
-                    Game.switchScene(InterlevelScene.class);
+                    if (Dungeon.hero.heroClass == HeroClass.WARRIOR || Dungeon.hero.heroClass == HeroClass.ROGUE) {
+                        InterlevelScene.returnPos = returnPos1;
+                        Game.switchScene(InterlevelScene.class);
+                    }else {
+                        InterlevelScene.returnPos = returnPos2;
+                        Game.switchScene(InterlevelScene.class);
+                    }
                 }
             }
 
