@@ -5,6 +5,7 @@ import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.ui.Archs;
 import com.daiduo.lightning.ui.CheckBox;
+import com.daiduo.lightning.ui.ExitButton;
 import com.daiduo.lightning.ui.OptionSlider;
 import com.daiduo.lightning.ui.Window;
 import com.watabou.noosa.Camera;
@@ -22,6 +23,9 @@ import static com.daiduo.lightning.ui.Window.TITLE_COLOR;
  */
 
 public class SettingsScene extends BlankScene {
+
+    private StartScene.GameButton settings1;
+
     @Override
     public void create() {
         super.create();
@@ -36,20 +40,19 @@ public class SettingsScene extends BlankScene {
         add(archs);
 
         fadeIn();
-    }
-    private class AudioTab extends Group {
-        public AudioTab() {
-            OptionSlider musicVol = new OptionSlider(Messages.get(this, "music_vol"), "0", "10", 0, 10) {
-                @Override
-                protected void onChange() {
-                    Music.INSTANCE.volume(getSelectedValue() / 10f);
-                    ShatteredPixelDungeon.musicVol(getSelectedValue());
-                }
-            };
-            musicVol.setSelectedValue(ShatteredPixelDungeon.musicVol());
-            musicVol.setRect(0, 0, 112, 25);
-            add(musicVol);
 
-        }
+        ExitButton exitButton = new ExitButton();
+        exitButton.setPos( w - exitButton.width() ,0 );
+        add( exitButton );
+
+        settings1 = new StartScene.GameButton( Messages.get(this,"settings")){
+            @Override
+            protected void onClick(){
+
+            }
+        };
     }
+
+
+
 }

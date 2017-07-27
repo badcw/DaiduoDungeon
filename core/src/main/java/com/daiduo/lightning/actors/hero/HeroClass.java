@@ -22,10 +22,9 @@ package com.daiduo.lightning.actors.hero;
 
 import com.daiduo.lightning.Assets;
 import com.daiduo.lightning.Badges;
-import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.Dungeon;
+import com.daiduo.lightning.classes.Challenges;
 import com.daiduo.lightning.items.BrokenSeal;
-import com.daiduo.lightning.items.Honeypot;
 import com.daiduo.lightning.items.armor.TaijiArmor;
 import com.daiduo.lightning.items.artifacts.CloakOfShadows;
 import com.daiduo.lightning.items.artifacts.Transpotation;
@@ -33,7 +32,6 @@ import com.daiduo.lightning.items.food.Food;
 import com.daiduo.lightning.items.potions.PotionOfHealing;
 import com.daiduo.lightning.items.potions.PotionOfMindVision;
 import com.daiduo.lightning.items.scrolls.ScrollOfMagicMapping;
-import com.daiduo.lightning.items.scrolls.ScrollOfMirrorImage;
 import com.daiduo.lightning.items.scrolls.ScrollOfUpgrade;
 import com.daiduo.lightning.items.wands.WandOfMagicMissile;
 import com.daiduo.lightning.items.weapon.melee.Dagger;
@@ -91,7 +89,7 @@ public enum HeroClass {
 	}
 
 	private static void initCommon( Hero hero ) {
-
+		
 		Transpotation trans = new Transpotation();
 		switch (Dungeon.hero.heroClass) {
 			case WARRIOR:

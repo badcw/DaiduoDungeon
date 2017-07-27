@@ -51,7 +51,7 @@ import java.util.HashSet;
 public class Potion extends Item {
 
 	public static final String AC_DRINK = "DRINK";
-
+	
 	private static final float TIME_TO_DRINK = 1f;
 
 	protected Integer initials;
@@ -167,6 +167,9 @@ public class Potion extends Item {
 			
 		}
 	}
+
+
+
 	
 	@Override
 	public void doThrow( final Hero hero ) {
