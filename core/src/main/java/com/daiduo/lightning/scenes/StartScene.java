@@ -55,7 +55,7 @@ public class StartScene extends PixelScene {
     private float buttonY;
 
     private GameButton btnLoad;
-    private GameButton btnNewGame;
+    public GameButton btnNewGame;
 
 
 

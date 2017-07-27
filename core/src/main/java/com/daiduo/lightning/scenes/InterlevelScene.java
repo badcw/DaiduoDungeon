@@ -22,6 +22,7 @@ package com.daiduo.lightning.scenes;
 
 import com.daiduo.lightning.Assets;
 import com.daiduo.lightning.Dungeon;
+import com.daiduo.lightning.GamesInProgress;
 import com.daiduo.lightning.ShatteredPixelDungeon;
 import com.daiduo.lightning.Statistics;
 import com.daiduo.lightning.actors.Actor;
@@ -31,9 +32,11 @@ import com.daiduo.lightning.levels.RegularLevel;
 import com.daiduo.lightning.messages.Messages;
 import com.daiduo.lightning.ui.GameLog;
 import com.daiduo.lightning.windows.WndError;
+import com.daiduo.lightning.windows.WndOptions;
 import com.daiduo.lightning.windows.WndStory;
 import com.watabou.noosa.Camera;
 import com.watabou.noosa.Game;
+import com.watabou.noosa.Gizmo;
 import com.watabou.noosa.RenderedText;
 import com.watabou.noosa.audio.Music;
 import com.watabou.noosa.audio.Sample;
@@ -72,6 +75,8 @@ public class InterlevelScene extends PixelScene {
 	@Override
 	public void create() {
 		super.create();
+
+
 
 		String text = Messages.get(Mode.class, mode.name());
 		

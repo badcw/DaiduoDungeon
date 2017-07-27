@@ -78,7 +78,7 @@ public class NewLevel extends Level {
 
         feeling = Feeling.NONE;
         return true;
-        
+
     }
 
 

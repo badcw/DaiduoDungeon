@@ -44,7 +44,7 @@ public class Archs extends Component {
 	@Override
 	protected void createChildren() {
 
-		arcsBg = new Image( asset, 0, 0, dispHeight, dispWidth);
+		arcsBg = new Image( asset, 0, 0, dispWidth, dispHeight);
 		add( arcsBg );
 	}
 }

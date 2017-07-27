@@ -149,8 +149,7 @@ public class Armor extends EquipableItem {
 				equipCursed( hero );
 				GLog.n( Messages.get(Armor.class, "equip_cursed") );
 			}
-			
-			((HeroSprite)hero.sprite).updateArmor();
+
 			activate(hero);
 
 			hero.spendAndNext( time2equip( hero ) );

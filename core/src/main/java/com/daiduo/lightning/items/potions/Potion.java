@@ -42,6 +42,7 @@ import com.daiduo.lightning.utils.GLog;
 import com.daiduo.lightning.windows.WndOptions;
 import com.watabou.noosa.audio.Sample;
 import com.watabou.utils.Bundle;
+import com.watabou.utils.Random;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -315,5 +316,21 @@ public class Potion extends Item {
 	@Override
 	public int price() {
 		return 30 * quantity;
+	}
+
+	@Override
+	public Item random() {
+		float roll = Random.Float();
+		if  (roll < 0.75f){
+			//75% chance to be level 0
+		} else if (roll < 0.95f){
+			//15% chance to be +1
+			upgrade(1);
+		} else {
+			//5% chance to be +2
+			upgrade(2);
+		}
+
+		return this;
 	}
 }

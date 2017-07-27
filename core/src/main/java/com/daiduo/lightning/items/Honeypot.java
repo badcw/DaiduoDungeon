@@ -40,9 +40,9 @@ import com.watabou.utils.Random;
 import java.util.ArrayList;
 
 public class Honeypot extends Item {
-	
+
 	public static final String AC_SHATTER	= "SHATTER";
-	
+
 	{
 		image = ItemSpriteSheet.HONEYPOT;
 
@@ -51,32 +51,32 @@ public class Honeypot extends Item {
 
 		stackable = true;
 	}
-	
+
 	@Override
 	public ArrayList<String> actions( Hero hero ) {
 		ArrayList<String> actions = super.actions( hero );
 		actions.add( AC_SHATTER );
 		return actions;
 	}
-	
+
 	@Override
 	public void execute( final Hero hero, String action ) {
 
 		super.execute( hero, action );
 
 		if (action.equals( AC_SHATTER )) {
-			
+
 			hero.sprite.zap( hero.pos );
-			
+
 			detach( hero.belongings.backpack );
 
-			shatter( hero, hero.pos ).collect();
+			shatter( hero, hero.pos );
 
 			hero.next();
 
 		}
 	}
-	
+
 	@Override
 	protected void onThrow( int cell ) {
 		if (Level.pit[cell]) {
@@ -85,59 +85,59 @@ public class Honeypot extends Item {
 			Dungeon.level.drop(shatter( null, cell ), cell);
 		}
 	}
-	
+
 	public Item shatter( Char owner, int pos ) {
-		
+
 		if (Dungeon.visible[pos]) {
 			Sample.INSTANCE.play( Assets.SND_SHATTER );
 			Splash.at( pos, 0xffd500, 5 );
 		}
-		
+
 		int newPos = pos;
 		if (Actor.findChar( pos ) != null) {
 			ArrayList<Integer> candidates = new ArrayList<Integer>();
 			boolean[] passable = Level.passable;
-			
+
 			for (int n : PathFinder.NEIGHBOURS4) {
 				int c = pos + n;
 				if (passable[c] && Actor.findChar( c ) == null) {
 					candidates.add( c );
 				}
 			}
-	
+
 			newPos = candidates.size() > 0 ? Random.element( candidates ) : -1;
 		}
-		
+
 		if (newPos != -1) {
 			Bee bee = new Bee();
 			bee.spawn( Dungeon.depth );
 			bee.setPotInfo( pos, owner );
 			bee.HP = bee.HT;
 			bee.pos = newPos;
-			
+
 			GameScene.add( bee );
 			Actor.addDelayed( new Pushing( bee, pos, newPos ), -1f );
-			
+
 			bee.sprite.alpha( 0 );
 			bee.sprite.parent.add( new AlphaTweener( bee.sprite, 1, 0.15f ) );
-			
+
 			Sample.INSTANCE.play( Assets.SND_BEE );
 			return new ShatteredPot().setBee( bee );
 		} else {
 			return this;
 		}
 	}
-	
+
 	@Override
 	public boolean isUpgradable() {
 		return false;
 	}
-	
+
 	@Override
 	public boolean isIdentified() {
 		return true;
 	}
-	
+
 	@Override
 	public int price() {
 		return 30 * quantity;
