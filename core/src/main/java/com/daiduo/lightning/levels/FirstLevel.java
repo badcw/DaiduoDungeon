@@ -2,27 +2,15 @@ package com.daiduo.lightning.levels;
 
 
 import com.daiduo.lightning.Assets;
-import com.daiduo.lightning.Bones;
 import com.daiduo.lightning.actors.Actor;
 import com.daiduo.lightning.actors.mobs.Mob;
-import com.daiduo.lightning.actors.mobs.Tengu;
-import com.daiduo.lightning.actors.mobs.npcs.Shopkeeper;
+import com.daiduo.lightning.actors.mobs.npcs.Alchemist;
 import com.daiduo.lightning.actors.mobs.npcs.StallSeller;
-import com.daiduo.lightning.items.Heap;
 import com.daiduo.lightning.items.Item;
-import com.daiduo.lightning.items.keys.IronKey;
-import com.daiduo.lightning.scenes.GameScene;
 import com.watabou.utils.Bundlable;
 import com.watabou.utils.Bundle;
-import com.watabou.utils.PathFinder;
-import com.watabou.utils.Random;
 
 import java.util.ArrayList;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
-import static android.os.Build.VERSION_CODES.M;
-import static com.daiduo.lightning.Assets.TENGU;
 
 public class FirstLevel extends Level {
 
@@ -89,18 +77,25 @@ public class FirstLevel extends Level {
     }
 
     @Override
-    protected void createMobs() {createStallSeller();
+    protected void createMobs() {
+        createStallSeller();
+        createAlchemist();
     }
 
     protected void createStallSeller(){
         Mob stallSeller = new StallSeller();
         stallSeller.pos = 7+2*32;
         mobs.add(stallSeller);
-
-
     }
 
 
+    protected void createAlchemist(){
+        Mob alchemist = new Alchemist();
+        alchemist.pos = 7-4+2*32;
+        mobs.add(alchemist);
+    }
+    
+    
     public Actor respawner() {
         return null;
     }

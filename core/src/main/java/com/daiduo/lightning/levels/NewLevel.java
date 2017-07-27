@@ -1,21 +1,11 @@
 package com.daiduo.lightning.levels;
 
 import com.daiduo.lightning.Assets;
-import com.daiduo.lightning.Dungeon;
-import com.daiduo.lightning.ShatteredPixelDungeon;
 import com.daiduo.lightning.actors.mobs.Mob;
-import com.daiduo.lightning.actors.mobs.npcs.Shopkeeper;
+import com.daiduo.lightning.actors.mobs.npcs.Alchemist;
 import com.daiduo.lightning.actors.mobs.npcs.StallSeller;
 import com.daiduo.lightning.items.Gold;
-import com.daiduo.lightning.levels.features.Chasm;
 import com.daiduo.lightning.levels.painters.Painter;
-import com.daiduo.lightning.messages.Messages;
-import com.daiduo.lightning.scenes.GameScene;
-import com.daiduo.lightning.scenes.InterlevelScene;
-import com.daiduo.lightning.scenes.IntroScene;
-import com.daiduo.lightning.scenes.StartScene;
-import com.daiduo.lightning.windows.WndOptions;
-import com.watabou.noosa.Game;
 
 import java.util.Arrays;
 
@@ -27,8 +17,6 @@ public class NewLevel extends Level {
 
     public static final int SIZE = 7;
     public static int bottomleft = SIZE*10 +1;
-    public static int bottomleftvertical = SIZE*(10/2)+1;
-    public static int test = (SIZE/3 + 1) * (10/2) + 1;
     {
         color1 = 0x801500;
         color2 = 0xa68521;
@@ -91,6 +79,7 @@ public class NewLevel extends Level {
     @Override
     protected void createMobs() {
         createStallSeller();
+        createAlchemist();
     }
 
     protected void createStallSeller(){
@@ -101,6 +90,12 @@ public class NewLevel extends Level {
 
     }
 
+    protected void createAlchemist(){
+        Mob alchemist = new Alchemist();
+        alchemist.pos = 99;
+        mobs.add(alchemist);
+    }
+    
 
     @Override
     protected void createItems() {
