@@ -28,7 +28,7 @@ public class Knuckles extends MeleeWeapon {
 		image = ItemSpriteSheet.KNUCKLEDUSTER;
 
 		tier = 1;
-		DLY = 0.5f; //2x speed
+		DLY = 0.333f; //2x speed
 	}
 
 	@Override
