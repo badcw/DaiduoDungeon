@@ -38,7 +38,7 @@ import java.util.Iterator;
 
 public class Belongings implements Iterable<Item> {
 
-	public static final int BACKPACK_SIZE	= 19;
+	public static final int BACKPACK_SIZE	= 24;
 	
 	private Hero owner;
 	
@@ -48,6 +48,7 @@ public class Belongings implements Iterable<Item> {
 	public Armor armor = null;
 	public KindofMisc misc1 = null;
 	public KindofMisc misc2 = null;
+	public KindofMisc misc3 = null;
 
 	public int[] ironKeys = new int[26];
 	public int[] specialKeys = new int[26]; //golden or boss keys
