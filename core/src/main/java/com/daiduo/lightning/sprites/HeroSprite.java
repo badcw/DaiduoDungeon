@@ -42,7 +42,7 @@ import static com.daiduo.lightning.actors.hero.HeroClass.WARRIOR;
 import static com.daiduo.lightning.sprites.ItemSprite.film;
 
 public class HeroSprite extends CharSprite {
-	
+
 	private static final int FRAME_WIDTH	= 14;
 	private static final int FRAME_HEIGHT	= 15;
 	
@@ -76,7 +76,16 @@ public class HeroSprite extends CharSprite {
                 idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1 );
 
                 run = new Animation( RUN_FRAMERATE, true );
-                run.frames( film, 2, 3, 4, 5, 6, 7 );
+		        switch(Dungeon.hero.heroClass) {
+		        	case WARRIOR:
+					case HUNTRESS:
+		        	case MAGE:
+		        		run.frames(film, 2, 3, 4, 5, 6, 7);
+		        		break;
+					case ROGUE:
+						run.frames(film, 2, 3, 4, 5, 6);
+						break;
+		        }
 
                 die = new Animation( 20, false );
 		        switch(Dungeon.hero.heroClass) {
@@ -84,7 +93,7 @@ public class HeroSprite extends CharSprite {
 				        die.frames(film, 8, 9, 10, 11, 12, 11);
 				        break;
 			        case ROGUE:
-				        die.frames(film, 8, 9, 10, 10);
+				        die.frames(film, 7, 8, 9, 10, 9);
 				        break;
 			        case HUNTRESS:
 				        die.frames(film, 8, 9, 10, 11, 12, 11);
@@ -103,8 +112,18 @@ public class HeroSprite extends CharSprite {
                 operate.frames( film, 16, 17, 16, 17 );
 
                 fly = new Animation( 1, true );
-                fly.frames( film, 18 );
 
+
+		        switch(Dungeon.hero.heroClass) {
+		        	case WARRIOR:
+		        	case HUNTRESS:
+		        	case MAGE:
+		        		fly.frames( film, 18);
+		        		break;
+		        	case ROGUE:
+		        		fly.frames( film,17);
+		        		break;
+		        }
                 read = new Animation( 20, false );
 	            switch(Dungeon.hero.heroClass) {
 	            	case HUNTRESS:

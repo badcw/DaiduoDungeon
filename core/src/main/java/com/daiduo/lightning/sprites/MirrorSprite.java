@@ -27,7 +27,7 @@ import com.watabou.noosa.TextureFilm;
 
 public class MirrorSprite extends MobSprite {
 	
-	private static final int FRAME_WIDTH	= 12;
+	private static final int FRAME_WIDTH	= 14;
 	private static final int FRAME_HEIGHT	= 15;
 	
 	public MirrorSprite() {
@@ -46,19 +46,41 @@ public class MirrorSprite extends MobSprite {
 	
 	public void updateArmor( int tier ) {
 		TextureFilm film = new TextureFilm( HeroSprite.tiers(), tier, FRAME_WIDTH, FRAME_HEIGHT );
-		
+
 		idle = new Animation( 1, true );
 		idle.frames( film, 0, 0, 0, 1, 0, 0, 1, 1 );
-		
+
 		run = new Animation( 20, true );
-		run.frames( film, 2, 3, 4, 5, 6, 7 );
-		
+		switch(Dungeon.hero.heroClass) {
+			case WARRIOR:
+			case HUNTRESS:
+			case MAGE:
+				run.frames(film, 2, 3, 4, 5, 6, 7);
+				break;
+			case ROGUE:
+				run.frames(film, 2, 3, 4, 5, 6);
+				break;
+		}
+
 		die = new Animation( 20, false );
-		die.frames( film, 0 );
-		
-		attack = new Animation( 15, false );
-		attack.frames( film, 13, 14, 15, 0 );
-		
+		switch(Dungeon.hero.heroClass) {
+			case WARRIOR:
+				die.frames(film, 8, 9, 10, 11, 12, 11);
+				break;
+			case ROGUE:
+				die.frames(film, 7, 8, 9, 10, 9);
+				break;
+			case HUNTRESS:
+				die.frames(film, 8, 9, 10, 11, 12, 11);
+				break;
+			case MAGE:
+				die.frames(film, 8, 9, 10, 11, 12, 11);
+				break;
+		}
+
+		attack = new Animation(15, false);
+		attack.frames(film, 13, 14, 15, 0);
+
 		idle();
 	}
 }
