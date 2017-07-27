@@ -30,7 +30,7 @@ public class AlbinoSprite extends MobSprite {
 		
 		texture( Assets.RAT );
 		
-		TextureFilm frames = new TextureFilm( texture, 16, 15 );
+		TextureFilm frames = new TextureFilm( texture, 27, 32 );
 		
 		idle = new Animation( 2, true );
 		idle.frames( frames, 16, 16, 16, 17 );
